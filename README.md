@@ -1,0 +1,2 @@
+# TODO task
+Esta aplicación de consola permite administrar una lista de TODOs, permitiendo dar de alta nuevas tareas, completarlas, listarlas y demás interacciones utilizando unicamente la linea de comandos.
