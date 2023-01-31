@@ -1,6 +1,4 @@
-const { resolve } = require('path');
-
-require('colors');
+import * as readline from 'readline';
 
 const mostrarMenu = () => {
 
@@ -18,12 +16,12 @@ const mostrarMenu = () => {
         console.log(`${'6.'.green} Borrar tarea`);
         console.log(`${'0.'.green} Salir \n`);
        
-        const readline = require('readline').createInterface({
+        const io = readline.createInterface({
             input: process.stdin,
             output: process.stdout
         });
     
-        readline.question('Seleccione una opción: ', (opt)=>{
+        io.question('Seleccione una opción: ', (opt)=>{
             readline.close();
             resolve(opt);        
         });
@@ -31,15 +29,15 @@ const mostrarMenu = () => {
     
 }
 
-const pausa = () => {
+const pause = () => {
 
     return new Promise(resolve=> {
-        const readline = require('readline').createInterface({
+        const io = readline.createInterface({
             input: process.stdin,
             output: process.stdout
         });
     
-        readline.question(`\nPresione ${'ENTER'.green} para continuar \n`, (opt)=>{
+        io.question(`\nPresione ${'ENTER'.green} para continuar \n`, (opt)=>{
             readline.close();
             resolve();        
         });
@@ -49,5 +47,5 @@ const pausa = () => {
 
 module.exports = {
     mostrarMenu,
-    pausa
+    pause
 }
