@@ -1,16 +1,27 @@
-import { inquirerMenu, pause } from './helpers/inquirer.js';
-import Task from './models/task.js';
+import { inquirerMenu, pause, readInput } from './helpers/inquirer.js';
+import { saveDB } from './helpers/saveFile.js';
+import Tasks from './models/tasks.js';
+
 
 console.clear();
 
+
 const main = async() =>{
     let opt = '';
-    
+    const tasks = new Tasks();
+
     do{
-        const task = new Task('comprar comida');
-        console.log(task);
-        
-        //opt = await inquirerMenu();
+        opt = await inquirerMenu();
+        switch(opt){
+            case '1': //Create new task and put in the taskList
+                const desc = await readInput('Descripción:');
+                tasks.newTask(desc);
+            break;
+            case '2': //Show the task list
+                console.log(tasks._taskList);
+            break;
+        }
+        //saveDB(tasks.listArr);
         await pause();
     } while(opt !== '0');
 }
